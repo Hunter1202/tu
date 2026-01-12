@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Explorer | Tour Guide Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #F5F0E8;
+        }
+
+        .nav {
+            background: #0B2843;
+            border-bottom: 1px solid rgba(243, 204, 23, 0.2);
+        }
+
+        .name {
+            background: linear-gradient(to right, #F3CC17, #CD7724);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .accent-border {
+            border-left: 4px solid #F3CC17;
+            padding-left: 1.5rem;
+        }
+
+        .story-number {
+            font-size: 6rem;
+            font-weight: bold;
+            color: rgba(243, 204, 23, 0.2);
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #F3CC17 0%, #CD7724 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(243, 204, 23, 0.4);
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #F3CC17, transparent);
+            margin: 4rem 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="nav fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <a href="#home">
+                    <span class="name font-bold text-3xl">Hương Tú</span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 text-white">
+                <a href="#about" class="hover:text-yellow-400 transition">About</a>
+                <a href="#journey" class="hover:text-yellow-400 transition">My Journey</a>
+                <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+            </div>
+            <a href="https://wanderlust.io.vn" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">
+                Book a Tour
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section with Carousel -->
+<section id="home" class="pt-20">
+    <div class="carousel-container h-screen relative">
+        <div class="carousel-slide active h-full" style="background: linear-gradient(rgba(11, 40, 67, 0.4), rgba(11, 40, 67, 0.6)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200') center/cover">
+            <div class="h-full flex items-center justify-center text-center px-6">
+                <a href="https://wanderlust.io.vn">
+                    <div class="text-white">
+                        <h1 class="text-6xl md:text-8xl font-bold mb-4">Explore the World</h1>
+                        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">With 15 years of experience guiding travelers through hidden gems and iconic destinations</p>
+                        <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">Start Your Adventure</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="carousel-slide h-full" style="background: linear-gradient(rgba(11, 40, 67, 0.4), rgba(11, 40, 67, 0.6)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200') center/cover">
+            <div class="h-full flex items-center justify-center text-center px-6">
+                <a href="https://wanderlust.io.vn">
+                    <div class="text-white">
+                        <h1 class="text-6xl md:text-8xl font-bold mb-4">Discover Culture</h1>
+                        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Immerse yourself in authentic experiences that connect you with local traditions</p>
+                        <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">Explore Tours</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="carousel-slide h-full" style="background: linear-gradient(rgba(11, 40, 67, 0.4), rgba(11, 40, 67, 0.6)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200') center/cover">
+            <div class="h-full flex items-center justify-center text-center px-6">
+                <a href="https://wanderlust.io.vn">
+                    <div class="text-white">
+                        <h1 class="text-6xl md:text-8xl font-bold mb-4">Create Memories</h1>
+                        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Every journey tells a story, let's write yours together</p>
+                        <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">Get in Touch</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button onclick="changeSlide(-1)" class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-4 rounded-full backdrop-blur transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button onclick="changeSlide(1)" class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-4 rounded-full backdrop-blur transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Carousel Indicators -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <button onclick="goToSlide(0)" class="indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+            <button onclick="goToSlide(1)" class="indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+            <button onclick="goToSlide(2)" class="indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-5xl font-bold mb-6" style="color: #0B2843;">Your Guide to Unforgettable Adventures</h2>
+                <div class="accent-border mb-6">
+                    <p class="text-lg mb-4" style="color: #0B2843;">For over 15 years, I've been privileged to share the world's most captivating destinations with curious travelers from around the globe. Each journey is more than just visiting places—it's about creating connections, understanding cultures, and discovering the extraordinary in the ordinary.</p>
+                </div>
+                <p class="text-lg mb-6" style="color: #0B2843;">My passion lies in crafting personalized experiences that go beyond the typical tourist trail. Whether you're seeking adventure, culture, cuisine, or tranquility, I'm here to guide you through unforgettable moments.</p>
+                <div class="flex gap-4 mb-6">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" style="color: #F3CC17;">500+</div>
+                        <div style="color: #0B2843;">Tours Led</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" style="color: #F3CC17;">35</div>
+                        <div style="color: #0B2843;">Countries Explored</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold" style="color: #F3CC17;">2000+</div>
+                        <div style="color: #0B2843;">Happy Travelers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=600" alt="Tour Guide" class="rounded-lg shadow-2xl" style="border: 4px solid #CD7724;">
+                <div class="absolute -bottom-6 -right-6 w-40 h-40 rounded-lg" style="background: linear-gradient(135deg, #F3CC17, #CD7724); z-index: -1;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Journey Story Section -->
+<section id="journey" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4" style="color: #0B2843;">My Journey as a Guide</h2>
+            <p class="text-xl" style="color: #0B2843;">From passion to profession—the story behind the adventures</p>
+        </div>
+
+        <!-- Story 01 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div class="relative">
+                <div class="story-number absolute -top-8 -left-4">01</div>
+                <h3 class="text-3xl font-bold mb-4" style="color: #0B2843;">The Spark of Wanderlust</h3>
+                <div class="accent-border">
+                    <p class="text-lg mb-4" style="color: #0B2843;">It all began with a backpack and a one-way ticket to Southeast Asia. At 23, fresh out of university, I traded my desk job for dirt roads and hostel bunks. Those six months of solo travel didn't just change my perspective—they revealed my calling.</p>
+                    <p class="text-lg" style="color: #0B2843;">I found myself naturally gravitating toward helping fellow travelers, sharing hidden spots, translating conversations, and creating impromptu group adventures. That's when I realized: this could be more than a gap year. This could be my life.</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Beginning" class="rounded-lg shadow-xl">
+                <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
+                    <span class="text-2xl">✨</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story 02 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div class="relative md:order-2">
+                <div class="story-number absolute -top-8 -right-4">02</div>
+                <h3 class="text-3xl font-bold mb-4" style="color: #0B2843;">Becoming a Professional</h3>
+                <div class="accent-border">
+                    <p class="text-lg mb-4" style="color: #0B2843;">Upon returning home, I enrolled in professional tour guide certification programs, studied multiple languages, and earned my first aid credentials. I started small—leading weekend hiking tours in my local region, gradually expanding to multi-day expeditions.</p>
+                    <p class="text-lg" style="color: #0B2843;">Every tour taught me something new: how to read a group's energy, when to speak and when to let silence amplify the moment, how to turn unexpected challenges into the best stories.</p>
+                </div>
+            </div>
+            <div class="relative md:order-1">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Growth" class="rounded-lg shadow-xl">
+                <div class="absolute bottom-4 left-4 bg-white rounded-full p-3 shadow-lg">
+                    <span class="text-2xl">🎓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story 03 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="story-number absolute -top-8 -left-4">03</div>
+                <h3 class="text-3xl font-bold mb-4" style="color: #0B2843;">Creating Meaningful Connections</h3>
+                <div class="accent-border">
+                    <p class="text-lg mb-4" style="color: #0B2843;">Today, after guiding over 500 tours across 35 countries, what drives me isn't checking destinations off a list—it's the human connections. It's watching a shy traveler open up over a campfire story. It's reconnecting locals with forgotten traditions. It's seeing someone's face light up at sunrise over Angkor Wat.</p>
+                    <p class="text-lg" style="color: #0B2843;">Every group becomes a temporary family, every tour a chapter in an ongoing story. And I'm honored to be the thread that weaves these experiences together.</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600" alt="Present" class="rounded-lg shadow-xl">
+                <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
+                    <span class="text-2xl">❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4" style="color: #0B2843;">Ready to Start Your Adventure?</h2>
+            <p class="text-xl" style="color: #0B2843;">Let's plan your perfect journey together</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Side - Image -->
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/487179190_2271993639863542_4679439317760322319_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEpG3hDlrM0H9gmGSEqsmblEPco6ovAn4AQ9yjqi8CfgCdeCue6Zb1tdmgLusEObaTVCsdtDES_rQR5qvIcwdGI&_nc_ohc=J63Fx12ZQzgQ7kNvwG4iYNb&_nc_oc=AdlIG4tVeQEfLsYKRpb86evCa7sG0t5I043JcvPp4JKtfXzMT1Z9RQCLT1luvPjJdEo&_nc_zt=23&_nc_ht=scontent.fhan5-8.fna&_nc_gid=7zNHtPdTSWJYaCEEF_Zb8Q&oh=00_AfojfywPPXA9aaUKFiMEQJ-vmN-tac5sgmNif51ehdW_Hw&oe=696AC91C"
+                         alt="Tour Guide"
+                         class="w-full h-[500px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h3 class="text-3xl font-bold mb-2">Hương Tú</h3>
+                        <p class="text-lg opacity-90">Professional Tour Guide</p>
+                    </div>
+                </div>
+                <!-- Decorative Element -->
+                <div class="absolute -bottom-6 -right-6 w-40 h-40 rounded-2xl -z-10" style="background: linear-gradient(135deg, #F3CC17, #CD7724);"></div>
+            </div>
+
+            <!-- Right Side - Contact Information -->
+            <div class="space-y-6">
+                <!-- Email -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 hover:shadow-xl transition-all duration-300" style="border-color: #F3CC17;">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #F3CC17, #CD7724);">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg mb-1" style="color: #0B2843;">Email</h4>
+                            <a href="mailto:booking@wanderlust.io.vn" class="hover:text-yellow-600 transition" style="color: #0B2843;">booking@wanderlust.io.vn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 hover:shadow-xl transition-all duration-300" style="border-color: #CD7724;">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #CD7724, #F3CC17);">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg mb-1" style="color: #0B2843;">Phone</h4>
+                            <a href="tel:+15551234567" class="hover:text-yellow-600 transition" style="color: #0B2843;">+84(0) 962 503 326</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 hover:shadow-xl transition-all duration-300" style="border-color: #F3CC17;">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #F3CC17, #CD7724);">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg mb-1" style="color: #0B2843;">Website</h4>
+                            <a href="https://wanderlust.io.vn" target="_blank" class="hover:text-yellow-600 transition" style="color: #0B2843;">www.wanderlust.io.vn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 hover:shadow-xl transition-all duration-300" style="border-color: #CD7724;">
+                    <h4 class="font-bold text-lg mb-4" style="color: #0B2843;">Connect With Me</h4>
+                    <div class="flex gap-3">
+                        <a href="https://www.facebook.com/huong.tu.689557" class="social-btn w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300" style="background: linear-gradient(135deg, #F3CC17, #CD7724);">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+
+                        <!-- WhatsApp Button -->
+                        <a href="https://wa.me/0962503326" class="social-btn w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300" style="background: linear-gradient(135deg, #CD7724, #F3CC17);">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </a>
+
+                        <!-- Zalo Button -->
+                        <a href="https://zalo.me/15551234567" class="social-btn w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300" style="background: linear-gradient(135deg, #F3CC17, #CD7724);">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 614.501 613.667">
+                                <path d="M464.721,301.399c-13.984-0.014-23.707,11.478-23.944,28.312c-0.251,17.771,9.168,29.208,24.037,29.202   c14.287-0.007,23.799-11.095,24.01-27.995C489.028,313.536,479.127,301.399,464.721,301.399z" />
+                                <path d="M291.83,301.392c-14.473-0.316-24.578,11.603-24.604,29.024c-0.02,16.959,9.294,28.259,23.496,28.502   c15.072,0.251,24.592-10.87,24.539-28.707C315.214,313.318,305.769,301.696,291.83,301.392z" />
+                                <path d="M310.518,3.158C143.102,3.158,7.375,138.884,7.375,306.3s135.727,303.142,303.143,303.142   c167.415,0,303.143-135.727,303.143-303.142S477.933,3.158,310.518,3.158z M217.858,391.083   c-33.364,0.818-66.828,1.353-100.133-0.343c-21.326-1.095-27.652-18.647-14.248-36.583c21.55-28.826,43.886-57.065,65.792-85.621   c2.546-3.305,6.214-5.996,7.15-12.705c-16.609,0-32.784,0.04-48.958-0.013c-19.195-0.066-28.278-5.805-28.14-17.652   c0.132-11.768,9.175-17.329,28.397-17.348c25.159-0.026,50.324-0.06,75.476,0.026c9.637,0.033,19.604,0.105,25.304,9.789   c6.22,10.561,0.284,19.512-5.646,27.454c-21.26,28.497-43.015,56.624-64.559,84.902c-2.599,3.41-5.119,6.88-9.453,12.725   c23.424,0,44.123-0.053,64.816,0.026c8.674,0.026,16.662,1.873,19.941,11.267C237.892,379.329,231.368,390.752,217.858,391.083z    M350.854,330.211c0,13.417-0.093,26.841,0.039,40.265c0.073,7.599-2.599,13.647-9.512,17.084   c-7.296,3.642-14.71,3.028-20.304-2.968c-3.997-4.281-6.214-3.213-10.488-0.422c-17.955,11.728-39.908,9.96-56.597-3.866   c-29.928-24.789-30.026-74.803-0.211-99.776c16.194-13.562,39.592-15.462,56.709-4.143c3.951,2.619,6.201,4.815,10.396-0.053   c5.39-6.267,13.055-6.761,20.271-3.357c7.454,3.509,9.935,10.165,9.776,18.265C350.67,304.222,350.86,317.217,350.854,330.211z    M395.617,369.579c-0.118,12.837-6.398,19.783-17.196,19.908c-10.779,0.132-17.593-6.966-17.646-19.512   c-0.179-43.352-0.185-86.696,0.007-130.041c0.059-12.256,7.302-19.921,17.896-19.222c11.425,0.752,16.992,7.448,16.992,18.833   c0,22.104,0,44.216,0,66.327C395.677,327.105,395.828,348.345,395.617,369.579z M463.981,391.868   c-34.399-0.336-59.037-26.444-58.786-62.289c0.251-35.66,25.304-60.713,60.383-60.396c34.631,0.304,59.374,26.306,58.998,61.986   C524.207,366.492,498.534,392.205,463.981,391.868z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="http://wanderlust.io.vn" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold w-full">Book Your Journey</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8" style="background-color: #0B2843;">
+    <div class="max-w-6xl mx-auto px-6 text-center text-white">
+        <p class="mb-2">© 2026 Journey Explorer. Created with passion for exploration.</p>
+        <p class="text-sm opacity-75">Every journey begins with a single step. Let's take it together.</p>
+    </div>
+</footer>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('bg-opacity-100'));
+        indicators.forEach(indicator => indicator.classList.add('bg-opacity-50'));
+
+        if (n >= slides.length) currentSlide = 0;
+        if (n < 0) currentSlide = slides.length - 1;
+
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.remove('bg-opacity-50');
+        indicators[currentSlide].classList.add('bg-opacity-100');
+    }
+
+    function changeSlide(n) {
+        currentSlide += n;
+        showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+        currentSlide = n;
+        showSlide(currentSlide);
+    }
+
+    // Auto-advance slides
+    setInterval(() => {
+        currentSlide++;
+        showSlide(currentSlide);
+    }, 5000);
+
+    // Initialize
+    showSlide(currentSlide);
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
